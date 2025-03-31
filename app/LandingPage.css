@@ -1,0 +1,509 @@
+/* Animation for NavBar dropping down and fading in */
+@keyframes navDropDown {
+    from {
+      opacity: 0;
+      transform: translateY(-100%); /* Start above the viewport */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0); /* End at its original position */
+    }
+  }
+  
+  /* ✅ Container to position the button */
+  #shop-button-container {
+    position: absolute;
+    bottom: 30vh; /* Starts below view */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it */
+    opacity: 0;
+    animation: shopButtonUp 1.5s ease-out forwards;
+    animation-delay: 2s; /* Matches NavBar animation */
+  }
+  /* ✅ Shop Button Styles */
+  .shop-button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    background-color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .shop-input {
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    margin-top: 10vh;
+  }
+  
+  /* ✅ Hover Effect */
+  .shop-button:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+  }
+  
+  /* ✅ Shop Button Animation */
+  @keyframes shopButtonUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, 50px); /* Moves up */
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+  }
+  
+  nav {
+    font-family: 'Bahnschrift Condensed';
+    font-weight: 2000;
+    position: fixed; /* Ensure NavBar stays at the top */
+    top: 0;
+    width: 100%;
+    height: 60px;
+    background-color: black;
+    color: white;
+    z-index: 1000; /* Ensure it stays on top of other elements */
+    opacity: 0; /* Initially hidden */
+    animation: navDropDown 1.5s ease-out forwards; /* Drop down with fade-in */
+    animation-delay: 2s; /* Delay until box1 and box2 animations complete */
+  }
+  
+  html, body {
+    background-color: black !important; /* ✅ Force black background */
+    color: white;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Ensure all sections and containers use full width */
+  #main {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    display: flex; /* Use flexbox to align boxes horizontally */
+    align-items: center; /* Vertically center the boxes */
+    padding-left: 25%;
+    padding-right: 23%;
+  }
+    
+    #box1 {
+      width: 600px; /* Reduced width */
+      height: 650px; /* Reduced height to maintain proportions */
+      background-image: url('/images/Luxe-Meadow-White-Font_1@4x-No-Writing.png');
+      background-size: contain; /* Ensures the entire image fits within the box */
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      margin-left: 0;
+      margin-right: 30px;
+    
+      /* Animation properties */
+      opacity: 0;
+      animation: fadeUp 1.5s ease-out forwards;
+      transition: width 0.3s ease, height 0.3s ease;
+  
+    }
+    
+    #box2 {
+      width: auto;
+      height: auto;
+      font-family: 'Bahnschrift Condensed';
+      color: white;
+      font-size: 11em;
+      font-weight: 500;
+      line-height: 160px;
+      position: relative; /* Positioning works with flexbox */
+      overflow: hidden;
+      margin-right: -15; /* No extra margin needed since it's the last box */
+      transition: width 0.3s ease, height 0.3s ease;
+      margin-top: 2%;
+  
+    }
+  
+  #text{
+      position: relative;
+      left: -100%;
+      animation: anim3 2s forwards 1s
+  }
+  
+  #box3 {
+      overflow: hidden;
+  }
+  
+  #container {
+      width: 100%;
+      position: absolute;
+      top: -100%;
+      animation: anim4 2s forwards 2.5s;
+  }
+  
+  #logo{
+      float: left;
+      margin-left: 100px;
+      margin-top: 20px;
+  }
+  
+  #logo img {
+      width: 50px;
+  }
+  
+  #menu {
+      font-family: 'Bahnschrift Condensed';
+      font-size: 14px;
+      color: white;
+      letter-spacing: 2px;
+      margin-right: 150px;
+      margin-top: 20px;
+      float: right;
+  }
+  
+  #menu ul {
+      list-style: none;
+  }
+  
+  #menu ul li {
+      display: inline-block;
+      margin-left: 100px;
+  }
+  
+  @keyframes fadeUp {
+      from {
+        opacity: 0; /* Fully transparent */
+        transform: translateY(300px); /* Start 100px below */
+      }
+      to {
+        opacity: 1; /* Fully visible */
+        transform: translateY(0); /* End at its original position */
+      }
+    }
+  
+  
+  /* Responsive adjustments */
+  @media (min-width: 2285px) and (max-width: 2780px) {
+      #main {
+        padding-left: 22%; /* Reduce padding for smaller screens */
+        padding-right: 20%;
+      }
+    
+      #box1 {
+        width: 550px; /* Scale down logo size */
+        height: 550px; /* Maintain proportions */
+        transition: width 0.3s ease, height 0.3s ease;
+  
+      }
+    
+      #box2 {
+        font-size: 9em; /* Reduce text size */
+        transition: width 0.3s ease, height 0.3s ease;
+  
+      }
+    }
+    
+    @media (min-width: 1920px) and (max-width: 2285px) {
+      #main {
+        padding-left: 30%; /* Reduce padding */
+        padding-right: 20%;
+      }
+    
+      #box1 {
+        width: 500px; /* Further scale down logo size */
+        height: 550px; /* Maintain proportions */
+        transition: width 0.3s ease, height 0.3s ease;
+  
+      }
+    
+      #box2 {
+        font-size: 8em; /* Reduce text size further */
+        transition: width 0.3s ease, height 0.3s ease;
+  
+      }
+    }
+    
+    @media (min-width: 1500px) and (max-width: 1920px) {
+      #main {
+          padding-left: 22%; /* Reduce padding */
+          padding-right: 10%;
+        }
+      
+        #box1 {
+          width: 500px; /* Further scale down logo size */
+          height: 550px; /* Maintain proportions */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+      
+        #box2 {
+          font-size: 8em; /* Reduce text size further */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+  
+     
+    }
+  
+    @media (min-width: 1280px) and (max-width: 1500px) {
+      #main {
+          padding-left: 20%; /* Reduce padding */
+          padding-right: 5%;
+        }
+      
+        #box1 {
+          width: 500px; /* Further scale down logo size */
+          height: 550px; /* Maintain proportions */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+      
+        #box2 {
+          font-size: 8em; /* Reduce text size further */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+  
+       
+    }
+  
+  
+    @media (min-width: 1000px) and (max-width: 1280px) {
+      #main {
+          padding-left: 10%; /* Reduce padding */
+          padding-right: 2.5%;
+        }
+      
+        #box1 {
+          width: 500px; /* Further scale down logo size */
+          height: 550px; /* Maintain proportions */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+      
+        #box2 {
+          font-size: 8em; /* Reduce text size further */
+          transition: width 0.3s ease, height 0.3s ease;
+        }
+  
+      
+    }
+  
+    @media (min-width: 930px) and (max-width: 1100px) {
+      #main {
+          padding-left: 10%; /* Reduce padding */
+          padding-right: 2.5%;
+        }
+      
+        #box1 {
+          width: 400px; /* Further scale down logo size */
+          height: 450px; /* Maintain proportions */
+          transition: width 0.3s ease, height 0.3s ease;
+  
+        }
+      
+        #box2 {
+          font-size: 7em; /* Reduce text size further */
+          line-height: 100px;
+          transition: width 0.3s ease, height 0.3s ease;
+        }
+  
+        #shop-button-container {
+          position: absolute;
+          bottom: 30vh; /* Starts below view */
+          left: 50%;
+          transform: translateX(-50%); /* Centers it */
+          opacity: 0;
+          animation: shopButtonUp 1.5s ease-out forwards;
+          animation-delay: 2s; /* Matches NavBar animation */
+        }
+    }
+  
+  
+    @media (min-width: 867px) and (max-width: 930px) {
+      #main {
+        padding-left: 10%; /* Reduce padding */
+        padding-right: 2.5%;
+      }
+    
+      #box1 {
+        width: 400px; /* Further scale down logo size */
+        height: 450px; /* Maintain proportions */
+        transition: width 0.3s ease, height 0.3s ease;
+  
+      }
+    
+      #box2 {
+        font-size: 6em; /* Reduce text size further */
+        line-height: 100px;
+        transition: width 0.3s ease, height 0.3s ease;
+      }
+  
+      #shop-button-container {
+        position: absolute;
+        bottom: 20vh; /* Starts below view */
+        left: 50%;
+        transform: translateX(-50%); /* Centers it */
+        opacity: 0;
+        animation: shopButtonUp 1.5s ease-out forwards;
+        animation-delay: 2s; /* Matches NavBar animation */
+      }
+    }
+  
+  
+    @media (min-width: 420px) and (max-width: 867px) {
+      #main {
+      
+        padding-left: 10%; /* Reduce padding */
+        padding-right: 2.5%;
+    
+        /* Stack box1 and box2 vertically */
+        flex-direction: column;
+       
+      }
+    
+      #box1 {
+        margin-top: 15vh;
+        width: 370px; /* Further scale down logo size */
+        height: 180px; /* Maintain proportions */
+      }
+    
+      #box2 {
+  
+        font-size: 6em; /* Reduce text size further */
+        line-height: 100px;
+        left: -35px;
+      }
+  
+      #shop-button-container {
+        position: absolute;
+        bottom: 25vh; /* Starts below view */
+        left: 50%;
+        transform: translateX(-50%); /* Centers it */
+        opacity: 0;
+        animation: shopButtonUp 1.5s ease-out forwards;
+        animation-delay: 2s; /* Matches NavBar animation */
+      }
+  
+      nav {
+        font-family: 'Bahnschrift Condensed';
+        font-weight: 2000;
+        position: fixed; /* Ensure NavBar stays at the top */
+        top: 0;
+        width: 100%;
+        height: 60px;
+        background-color: black;
+        color: white;
+        z-index: 1000; /* Ensure it stays on top of other elements */
+        opacity: 0; /* Initially hidden */
+        animation: navDropDown 1.5s ease-out forwards; /* Drop down with fade-in */
+        animation-delay: 2s; /* Delay until box1 and box2 animations complete */
+      }
+  
+     
+    }
+  
+  
+  
+    
+  
+    @media (min-width: 0px) and (max-width: 420px) {
+      #main {
+      
+        padding-left: 10%; /* Reduce padding */
+        padding-right: 2.5%;
+    
+        /* Stack box1 and box2 vertically */
+        flex-direction: column;
+       
+      }
+    
+      #box1 {
+        margin-top: 15vh;
+        width: 300px; /* Further scale down logo size */
+        height: 220px; /* Maintain proportions */
+      }
+    
+      #box2 {
+  
+        font-size: 4.5em; /* Reduce text size further */
+        line-height: 75px;
+        bottom: 35px;
+        left: -40px;
+      }
+  
+      #shop-button-container {
+        position: absolute;
+        bottom: 20.5vh; /* Starts below view */
+        left: 50%;
+        transform: translateX(-50%); /* Centers it */
+        opacity: 0;
+        animation: shopButtonUp 1.5s ease-out forwards;
+        animation-delay: 2s; /* Matches NavBar animation */
+      }
+  
+      nav {
+        font-family: 'Bahnschrift Condensed';
+        font-weight: 2000;
+        position: fixed; /* Ensure NavBar stays at the top */
+        top: 0;
+        width: 100%;
+        height: 50px;
+        background-color: black;
+        color: white;
+        z-index: 1000; /* Ensure it stays on top of other elements */
+        opacity: 0; /* Initially hidden */
+        animation: navDropDown 1.5s ease-out forwards; /* Drop down with fade-in */
+        animation-delay: 2s; /* Delay until box1 and box2 animations complete */
+      }
+    }
+    
+    
+  
+  
+  @keyframes anim {
+      from {
+          bottom: -100%;
+      }
+      to 
+      {
+          bottom: 0%;
+      }
+  }
+  
+  
+  @keyframes anim2 {
+      from {
+          left: 30%;
+          width: 530px;
+      }
+      to {
+          width: 0px;
+          left: 50%;
+      }
+  }
+  
+  @keyframes anim3 {
+      from {
+          left:-100%;
+      }
+      to {
+          left: 0%;
+      }
+  }
+  
+  @keyframes anim4 {
+      from {
+          top: -100%;
+      }
+      to {
+          top: 0%;
+      }
+  }
+  
+  

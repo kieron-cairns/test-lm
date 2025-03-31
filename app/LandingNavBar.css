@@ -1,0 +1,101 @@
+/* Default font size and styles for larger screens */
+.nav-heading {
+    font-size: 2rem; /* Tailwind: text-3xl (32px) */
+    font-weight: 700; /* Tailwind: font-bold */
+    color: black; /* Tailwind: text-black */
+}
+
+/* ✅ Moves the buttons to the right */
+.buttons {
+    margin-left: auto; /* Pushes the div to the right */
+    display: flex;
+    gap: 16px; /* Equivalent to Tailwind: gap-4 */
+}
+
+/* ✅ Button styling (from Tailwind) */
+.button-link {
+    font-size: 1.5rem; /* Tailwind: text-lg (18px) */
+    font-weight: 500; /* Tailwind: font-medium */
+    color: black; /* Tailwind: text-black */
+    padding: 8px 16px; /* Tailwind: px-4 py-2 */
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+
+/* ✅ Hover effect */
+.button-link:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Reduce <h1> size for screens between 420px and 930px */
+@media (max-width: 930px) and (min-width: 420px) {
+    .nav-heading {
+        font-size: 1.5rem; /* Tailwind: text-2xl (24px) */
+        position: relative;
+        left: -30px; /* Adjust positioning */
+        color: black;
+        white-space: nowrap; /* ✅ Prevents text from wrapping to two lines */
+        flex-grow: 1; /* ✅ Ensures it takes only needed space */
+    }
+
+    .buttons {
+        display: flex;
+        gap: 16px; /* Equivalent to Tailwind: gap-4 */
+        justify-content: flex-end; /* ✅ Pushes buttons to the right */
+        padding-left: 100px; /* ✅ Remove unnecessary left padding */
+        min-width: fit-content; /* ✅ Prevents buttons from taking too much space */
+    }
+
+    /* ✅ Button styling (from Tailwind) */
+    .button-link {
+        font-size: 1.25rem; /* Tailwind: text-lg (18px) */
+        font-weight: 500; /* Tailwind: font-medium */
+        color: black; /* Tailwind: text-black */
+        padding: 16px 6px; /* Tailwind: px-4 py-2 */
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* ✅ Hover effect */
+    .button-link:hover {
+        text-decoration: underline;
+    }
+}
+
+
+
+
+/* ✅ Reduce <h1> size for screens between 420px and 930px */
+@media (max-width: 420px) and (min-width: 0px) {
+    .nav-heading {
+        font-size: 1.5rem; /* Tailwind: text-2xl (24px) */
+        position: relative;
+        left: -30px; /* Adjust positioning */
+        color: black;
+        white-space: nowrap; /* ✅ Prevents text from wrapping to two lines */
+        flex-grow: 1; /* ✅ Ensures it takes only needed space */
+    }
+
+    .buttons {
+        display: flex;
+        gap: 16px; /* Equivalent to Tailwind: gap-4 */
+        justify-content: flex-end; /* ✅ Pushes buttons to the right */
+        padding-left: 45px; /* ✅ Remove unnecessary left padding */
+        min-width: fit-content; /* ✅ Prevents buttons from taking too much space */
+    }
+
+    /* ✅ Button styling (from Tailwind) */
+    .button-link {
+        font-size: 1.25rem; /* Tailwind: text-lg (18px) */
+        font-weight: 500; /* Tailwind: font-medium */
+        color: black; /* Tailwind: text-black */
+        padding: 16px 6px; /* Tailwind: px-4 py-2 */
+        text-decoration: none;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* ✅ Hover effect */
+    .button-link:hover {
+        text-decoration: underline;
+    }
+}
