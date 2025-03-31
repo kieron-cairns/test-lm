@@ -13,7 +13,7 @@
   /* ✅ Container to position the button */
   #shop-button-container {
     position: absolute;
-    bottom: 30vh; /* Starts below view */
+    bottom: 20vh; /* Starts below view */
     left: 50%;
     transform: translateX(-50%); /* Centers it */
     opacity: 0;
@@ -354,7 +354,9 @@
         animation-delay: 2s; /* Matches NavBar animation */
       }
     }
-  
+ 
+
+      
   
     @media (min-width: 420px) and (max-width: 867px) {
       #main {
@@ -506,4 +508,84 @@
       }
   }
   
-  
+   
+  @media (max-width: 500px) { 
+ 
+    #box1 {
+      width: 200px;
+      height: 140px;
+      margin-top: 9vh;
+    }
+    
+    #box2 {
+      font-size: 4em;
+      line-height: normal;
+      left: -35px;
+    }
+    #text {
+      text-align: center !important;
+    }
+    #shop-button-container {
+      width: 90% !important;
+      margin: auto !important;
+      bottom: 30.5vh;
+    }
+    .shop-input {
+      width: 100%;
+      margin-top: 1vh;
+      margin-bottom: 2vh;
+    }
+    .shop-button {
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 500px) and (max-width: 790px) {
+
+    #box1 {
+      width: 250px;
+      height: 146px;
+      margin-top: 9vh;
+    }
+    
+    #box2 {
+      font-size: 4.5em;
+      line-height: normal;
+      left: -30px;
+    }
+    #shop-button-container {
+      width: 70% !important;
+      margin: auto !important;
+      bottom: 25.5vh;
+    }
+
+    #text {
+      text-align: center !important;
+    }
+
+    .shop-input {
+      width: 100%;
+      margin-top: 1vh;
+      margin-bottom: 2vh;
+    }
+    .shop-button {
+      width: 100%;
+    }
+  }
+  @media (min-width: 790px) and (max-width: 1000px) { 
+    #box1 {
+      width: 250px;
+      height: 146px;
+      margin-top: 9vh;
+    }
+    #text {
+      text-align: center !important;
+    }
+  }
+  @media (min-width: 920px) and (max-width: 1000px) { 
+    #shop-button-container {
+      position: absolute;
+      bottom: 22vh;
+    }
+ 
+  }
