@@ -19,6 +19,7 @@ const LandingNavBar = () => {
 
   return (
     <nav className="flex items-center justify-between py-9 px-10 bg-white">
+         <div className="video-container">
       <video 
         ref={videoRef}
         src="/Luxe-Meadow-Black-No-Writing-Animate-MP4.mp4" 
@@ -28,6 +29,7 @@ const LandingNavBar = () => {
         width={100} 
         height={200} 
       />
+      </div>
 
       <h1 className="nav-heading">Luxe Meadow</h1>
 
