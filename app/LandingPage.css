@@ -84,6 +84,7 @@ html, body {
 }
 
 /* Ensure all sections and containers use full width */
+
 #main {
   width: 100%;
   height: 100%;
@@ -95,7 +96,7 @@ html, body {
   padding-left: 25%;
   padding-right: 23%;
 }
-  
+
   #box1 {
     width: 600px; /* Reduced width */
     height: 650px; /* Reduced height to maintain proportions */
@@ -361,6 +362,8 @@ html, body {
     
 
   @media (min-width: 420px) and (max-width: 867px) {
+  
+
     #main {
     
       padding-left: 10%; /* Reduce padding */
@@ -370,7 +373,7 @@ html, body {
       /* Stack box1 and box2 vertically */
       flex-direction: column;
      
-    }
+    } 
   
     #box1 {
       margin-top: 15vh;

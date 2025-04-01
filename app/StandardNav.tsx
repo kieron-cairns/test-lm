@@ -1,9 +1,10 @@
+"use client"; 
 
 import React, { useEffect, useRef } from "react";
 import Link from "next/link";
 import "./LandingNavBar.css";
 
-const LandingNavBar = () => {
+const StandardNav = () => {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -43,4 +44,4 @@ const LandingNavBar = () => {
   );
 };
 
-export default LandingNavBar;
+export default StandardNav
