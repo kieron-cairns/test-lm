@@ -55,7 +55,8 @@ export default function LandingPage() {
         <div id="box1"></div>
         <div id="box2">
           <div id="text">
-            Luxe <br /> Meadow
+            Luxe <br /> 
+            <div id="box3">Meadow</div>
           </div>
         </div>
 

@@ -27,6 +27,22 @@
     text-decoration: underline;
 }
 
+/* ✅ Fix Video Positioning */
+.video-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Ensure video is at the left */
+    margin-left: -45px;
+}
+
+/* Ensure video scales properly on mobile */
+.video-container video {
+    max-width: 100px; /* Adjust size as needed */
+    height: auto;
+}
+
+
+
 /* ✅ Reduce <h1> size for screens between 420px and 930px */
 @media (max-width: 930px) and (min-width: 420px) {
     .nav-heading {
@@ -36,6 +52,16 @@
         color: black;
         white-space: nowrap; /* ✅ Prevents text from wrapping to two lines */
         flex-grow: 1; /* ✅ Ensures it takes only needed space */
+    }
+
+
+    /* ✅ Fix Video Positioning */
+    .video-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Ensure video is at the left */
+        margin-left: -45px;
+        padding-right: 20px;
     }
 
     .buttons {
@@ -74,6 +100,15 @@
         color: black;
         white-space: nowrap; /* ✅ Prevents text from wrapping to two lines */
         flex-grow: 1; /* ✅ Ensures it takes only needed space */
+    }
+
+        /* ✅ Fix Video Positioning */
+    .video-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; /* Ensure video is at the left */
+        margin-left: -45px;
+        padding-right: 20px;
     }
 
     .buttons {
