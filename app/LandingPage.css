@@ -584,6 +584,12 @@ html, body {
     height: 146px;
     margin-top: 9vh;
   }
+
+  #box2 {
+    margin-left: 30px;
+  }
+
+
   #text {
     text-align: center !important;
   }
