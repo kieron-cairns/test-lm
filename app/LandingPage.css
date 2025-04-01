@@ -91,6 +91,7 @@ html, body {
   overflow: hidden;
   display: flex; /* Use flexbox to align boxes horizontally */
   align-items: center; /* Vertically center the boxes */
+  justify-content: center;
   padding-left: 25%;
   padding-right: 23%;
 }
@@ -364,6 +365,7 @@ html, body {
     
       padding-left: 10%; /* Reduce padding */
       padding-right: 2.5%;
+      justify-content: unset;
   
       /* Stack box1 and box2 vertically */
       flex-direction: column;
