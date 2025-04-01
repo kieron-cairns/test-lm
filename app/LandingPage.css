@@ -515,6 +515,11 @@ html, body {
     }
 }
 
+@media (min-width: 320px) and (max-width: 500px) {
+  #shop-button-container {
+    bottom: 19.5vh !important;
+  }
+} 
  
 @media (max-width: 500px) { 
 
