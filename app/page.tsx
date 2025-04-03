@@ -52,12 +52,10 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-      <div id="box1">
-        <video autoPlay loop muted playsInline>
-          <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-      </div>
+        <video id="box1" autoPlay muted playsInline>
+        <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
+        <div id="fallback-box1"></div>
+      </video>
         <div id="box2">
           <div id="text">
             Luxe <br /> 
