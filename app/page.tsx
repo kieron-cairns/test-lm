@@ -1,12 +1,31 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./LandingPageNavBar";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
-  // const functionsKey = process.env.NEXT_PUBLIC_FUNCTIONS_KEY ?? '';
+
+  useEffect(() => {
+    const video = document.getElementById("box1") as HTMLVideoElement | null; // ✅ Explicitly cast as HTMLVideoElement
+
+    if (video) {
+      video.removeAttribute("controls"); // ✅ Removes controls to prevent play button
+      video.muted = true; // ✅ Ensures muted (required for autoplay)
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise
+          .then(() => console.log("Autoplay successful"))
+          .catch(() => {
+            console.log("Autoplay blocked, retrying...");
+            video.play();
+          });
+      }
+    }
+  }, []);
+
   const handleSubscribe = async () => {
     if (!email) {
       alert("Please enter a valid email address.");
@@ -25,17 +44,17 @@ export default function LandingPage() {
           body: JSON.stringify({ email }),
         }
       );
-    
-      const responseText = await response.text(); // Read response as text
+
+      const responseText = await response.text();
       console.log("Raw response:", responseText);
-    
+
       if (response.ok) {
         alert("Subscription successful!");
         setEmail("");
       } else {
         let errorMessage = "Failed to subscribe.";
         try {
-          const errorData = JSON.parse(responseText); // Try parsing JSON
+          const errorData = JSON.parse(responseText);
           errorMessage = errorData.error || errorMessage;
         } catch {
           errorMessage = `Unexpected response: ${responseText}`;
@@ -52,13 +71,14 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-        <video id="box1" autoPlay muted playsInline>
-        <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
-        <div id="fallback-box1"></div>
-      </video>
+        <video id="box1" autoPlay loop muted playsInline>
+          <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
+          <div id="fallback-box1"></div>
+        </video>
+
         <div id="box2">
           <div id="text">
-            Luxe <br /> 
+            Luxe <br />
             <div id="box3">Meadow</div>
           </div>
         </div>
@@ -71,7 +91,6 @@ export default function LandingPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{ color: "black" }}
-
           />
           <button className="shop-button" onClick={handleSubscribe}>
             Subscribe
@@ -80,4 +99,4 @@ export default function LandingPage() {
       </div>
     </div>
   );
-}   
+}
