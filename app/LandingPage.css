@@ -100,7 +100,6 @@ html, body {
   #box1 {
     width: 600px; /* Reduced width */
     height: 650px; /* Reduced height to maintain proportions */
-    background-image: url('/images/Luxe-Meadow-White-Font_1@4x-No-Writing.png');
     background-size: contain; /* Ensures the entire image fits within the box */
     background-position: center;
     background-repeat: no-repeat;
@@ -112,8 +111,25 @@ html, body {
     opacity: 0;
     animation: fadeUp 1.5s ease-out forwards;
     transition: width 0.3s ease, height 0.3s ease;
-
   }
+
+  #fallback-box1 {
+    width: 600px; /* Reduced width */
+    height: 650px; /* Reduced height to maintain proportions */
+    background-image: url('/images/ALuxe-Meadow-White-Font_1@4x-No-Writing.png');
+    background-size: contain; /* Ensures the entire image fits within the box */
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    margin-left: 0;
+    margin-right: 30px;
+  
+    /* Animation properties */
+    opacity: 0;
+    animation: fadeUp 1.5s ease-out forwards;
+    transition: width 0.3s ease, height 0.3s ease;
+  }
+  
   
   #box2 {
     width: auto;
