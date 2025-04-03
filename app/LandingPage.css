@@ -100,6 +100,7 @@ html, body {
   #box1 {
     width: 600px; /* Reduced width */
     height: 650px; /* Reduced height to maintain proportions */
+    background-image: url('/images/Luxe-Meadow-White-Font_1@4x-No-Writing.png');
     background-size: contain; /* Ensures the entire image fits within the box */
     background-position: center;
     background-repeat: no-repeat;

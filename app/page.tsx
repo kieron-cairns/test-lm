@@ -1,42 +1,12 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import NavBar from "./LandingPageNavBar";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    const video = videoRef.current;
-
-    if (video) {
-      video.muted = true; // Required for autoplay on mobile
-      video.playsInline = true; // Helps with iOS autoplay
-      video.autoplay = true; // Ensure autoplay is enabled
-      video.load(); // Ensures the browser knows the video should start
-
-      // Remove controls after a slight delay (some browsers add them dynamically)
-      setTimeout(() => {
-        video.removeAttribute("controls");
-      }, 100);
-
-      // Try playing the video
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => console.log("Autoplay successful"))
-          .catch(() => {
-            console.log("Autoplay blocked. Waiting for user interaction...");
-            document.addEventListener("click", () => {
-              video.play(); // Play video when the user interacts with the page
-            }, { once: true }); // Ensure it only triggers once
-          });
-      }
-    }
-  }, []);
-
+  // const functionsKey = process.env.NEXT_PUBLIC_FUNCTIONS_KEY ?? '';
   const handleSubscribe = async () => {
     if (!email) {
       alert("Please enter a valid email address.");
@@ -55,17 +25,17 @@ export default function LandingPage() {
           body: JSON.stringify({ email }),
         }
       );
-
-      const responseText = await response.text();
+    
+      const responseText = await response.text(); // Read response as text
       console.log("Raw response:", responseText);
-
+    
       if (response.ok) {
         alert("Subscription successful!");
         setEmail("");
       } else {
         let errorMessage = "Failed to subscribe.";
         try {
-          const errorData = JSON.parse(responseText);
+          const errorData = JSON.parse(responseText); // Try parsing JSON
           errorMessage = errorData.error || errorMessage;
         } catch {
           errorMessage = `Unexpected response: ${responseText}`;
@@ -82,14 +52,10 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-        <video ref={videoRef} autoPlay loop muted playsInline>
-          <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
-          <div id="fallback-box1"></div>
-        </video>
-
+        <div id="box1"></div>
         <div id="box2">
           <div id="text">
-            Luxe <br />
+            Luxe <br /> 
             <div id="box3">Meadow</div>
           </div>
         </div>
@@ -102,6 +68,7 @@ export default function LandingPage() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{ color: "black" }}
+
           />
           <button className="shop-button" onClick={handleSubscribe}>
             Subscribe
