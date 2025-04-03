@@ -52,10 +52,7 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-        <video id="box1" autoPlay muted playsInline webkit-playsinline>
-        <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
-        <div id="fallback-box1"></div>
-      </video>
+        <div id="box1"></div>
         <div id="box2">
           <div id="text">
             Luxe <br /> 
@@ -80,4 +77,4 @@ export default function LandingPage() {
       </div>
     </div>
   );
-}
+}   
