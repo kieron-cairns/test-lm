@@ -1,26 +1,34 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import NavBar from "./LandingPageNavBar";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
+  const videoRef = useRef<HTMLVideoElement | null>(null); // Use ref instead of getElementById
 
   useEffect(() => {
-    const video = document.getElementById("box1") as HTMLVideoElement | null; // ✅ Explicitly cast as HTMLVideoElement
+    const video = videoRef.current;
 
     if (video) {
-      video.removeAttribute("controls"); // ✅ Removes controls to prevent play button
-      video.muted = true; // ✅ Ensures muted (required for autoplay)
+      video.muted = true; // ✅ Required for autoplay on mobile
+      video.playsInline = true; // ✅ Helps with iOS autoplay
+      video.autoplay = true; // ✅ Ensure autoplay is enabled
+      video.load(); // ✅ Ensures the browser knows the video should start
 
+      setTimeout(() => {
+        video.removeAttribute("controls"); // ✅ Some browsers add controls automatically
+      }, 100); // Slight delay to ensure it applies after render
+
+      // Try playing the video
       const playPromise = video.play();
       if (playPromise !== undefined) {
         playPromise
           .then(() => console.log("Autoplay successful"))
           .catch(() => {
             console.log("Autoplay blocked, retrying...");
-            video.play();
+            video.play(); // Retry if initially blocked
           });
       }
     }
@@ -71,7 +79,7 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-        <video id="box1" autoPlay loop muted playsInline>
+        <video id="box1" ref={videoRef} autoPlay muted playsInline>
           <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
           <div id="fallback-box1"></div>
         </video>
