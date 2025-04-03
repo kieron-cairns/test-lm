@@ -15,7 +15,7 @@ export default function LandingPage() {
 
     try {
       const response = await fetch(
-        "https://fnlmwelcomemailsender.azurewebsites.net/api/contacts/subscribe",
+        "",
         {
           method: "POST",
           headers: {
