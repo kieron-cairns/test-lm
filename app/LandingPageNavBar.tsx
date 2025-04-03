@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Link from "next/link";
+// import Link from "next/link";
 import "./LandingNavBar.css";
 
 const LandingNavBar = () => {
