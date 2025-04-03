@@ -34,9 +34,9 @@ const LandingNavBar = () => {
       <h1 className="nav-heading">Luxe Meadow</h1>
 
       <div className="buttons">
-        <Link href="/about" className="button-link">
+        {/* <Link href="/about" className="button-link">
           About
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
