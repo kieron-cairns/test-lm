@@ -6,20 +6,21 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
-  const videoRef = useRef<HTMLVideoElement | null>(null); // Use ref instead of getElementById
+  const videoRef = useRef<HTMLVideoElement | null>(null);
 
   useEffect(() => {
     const video = videoRef.current;
 
     if (video) {
-      video.muted = true; // ✅ Required for autoplay on mobile
-      video.playsInline = true; // ✅ Helps with iOS autoplay
-      video.autoplay = true; // ✅ Ensure autoplay is enabled
-      video.load(); // ✅ Ensures the browser knows the video should start
+      video.muted = true; // Required for autoplay on mobile
+      video.playsInline = true; // Helps with iOS autoplay
+      video.autoplay = true; // Ensure autoplay is enabled
+      video.load(); // Ensures the browser knows the video should start
 
+      // Remove controls after a slight delay (some browsers add them dynamically)
       setTimeout(() => {
-        video.removeAttribute("controls"); // ✅ Some browsers add controls automatically
-      }, 100); // Slight delay to ensure it applies after render
+        video.removeAttribute("controls");
+      }, 100);
 
       // Try playing the video
       const playPromise = video.play();
@@ -27,8 +28,10 @@ export default function LandingPage() {
         playPromise
           .then(() => console.log("Autoplay successful"))
           .catch(() => {
-            console.log("Autoplay blocked, retrying...");
-            video.play(); // Retry if initially blocked
+            console.log("Autoplay blocked. Waiting for user interaction...");
+            document.addEventListener("click", () => {
+              video.play(); // Play video when the user interacts with the page
+            }, { once: true }); // Ensure it only triggers once
           });
       }
     }
@@ -79,7 +82,7 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-        <video id="box1" ref={videoRef} autoPlay muted playsInline>
+        <video ref={videoRef} autoPlay loop muted playsInline>
           <source src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.mp4" type="video/mp4" />
           <div id="fallback-box1"></div>
         </video>
