@@ -22,6 +22,7 @@ const LandingNavBar = () => {
         <video
           ref={videoRef}
           src="/Luxe-Meadow-Black-No-Writing-Animate-MP4.mp4"
+          autoPlay
           muted
           playsInline
           preload="auto"
