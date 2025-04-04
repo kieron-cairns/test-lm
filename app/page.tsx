@@ -53,14 +53,15 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
+      <div id="box1">
         <Image
-          id="box1"
           src="/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif"
           alt="Luxe Meadow GIF"
-          width={600}
-          height={400}
           priority
+          fill
+          style={{ objectFit: "contain" }} // Keeps it neat inside the box
         />
+      </div>
         <div id="box2">
           <div id="text">
             Luxe <br />
