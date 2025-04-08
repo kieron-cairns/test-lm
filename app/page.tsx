@@ -7,11 +7,10 @@ import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
-  const [gifSrc, setGifSrc] = useState("/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif");
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    // Force fresh GIF load only on client
-    setGifSrc(`/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif?${Date.now()}`);
+    setIsClient(true); // This ensures rendering only happens on client
   }, []);
 
   const handleSubscribe = async () => {
@@ -60,10 +59,9 @@ export default function LandingPage() {
       <NavBar />
       <div id="main">
         <div id="box1">
-          {/* Only render image once gifSrc is set */}
-          {gifSrc && (
+          {isClient && (
             <Image
-              src={gifSrc}
+              src={`/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif?${Date.now()}`}
               alt="Luxe Meadow GIF"
               priority
               fill
