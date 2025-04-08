@@ -1,12 +1,18 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NavBar from "./LandingPageNavBar";
 import Image from "next/image";
 import "./LandingPage.css";
 
 export default function LandingPage() {
   const [email, setEmail] = useState("");
+  const [gifSrc, setGifSrc] = useState("/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif");
+
+  useEffect(() => {
+    // Force fresh GIF load only on client
+    setGifSrc(`/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif?${Date.now()}`);
+  }, []);
 
   const handleSubscribe = async () => {
     if (!email) {
@@ -53,15 +59,19 @@ export default function LandingPage() {
     <div>
       <NavBar />
       <div id="main">
-      <div id="box1">
-      <Image
-        src={`/images/Animated-Luxe-Meadow-White-Font_1@4x-No-Writing.gif?${Date.now()}`} // Forces reload
-        alt="Luxe Meadow GIF"
-        priority
-        fill
-        style={{ objectFit: "contain" }}
-      />
-      </div>
+        <div id="box1">
+          {/* Only render image once gifSrc is set */}
+          {gifSrc && (
+            <Image
+              src={gifSrc}
+              alt="Luxe Meadow GIF"
+              priority
+              fill
+              style={{ objectFit: "contain" }}
+            />
+          )}
+        </div>
+
         <div id="box2">
           <div id="text">
             Luxe <br />
