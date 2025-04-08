@@ -54,7 +54,9 @@ export default function LandingPage() {
           const errorData = JSON.parse(responseText);
           errorMessage = errorData.error || errorMessage;
         } catch {
-          errorMessage = `Unexpected response: ${responseText}`;
+          // errorMessage = `Unexpected response: ${responseText}`;
+            errorMessage = `You are already subscirbed 😎`;
+
         }
         setIsError(true); // Show error dialog
         setErrorMessage(errorMessage);
@@ -191,7 +193,7 @@ export default function LandingPage() {
         }
 
         .error-message {
-          color: red;
+          color: green;
         }
 
         .dismiss-button {
