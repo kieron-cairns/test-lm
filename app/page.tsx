@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 import React, { useState, useEffect } from "react";
 import NavBar from "./LandingPageNavBar";
@@ -63,10 +63,6 @@ export default function LandingPage() {
     }
   };
 
-  const handleDismissSuccess = () => {
-    setIsSuccess(false); // Dismiss the success message
-  };
-
   return (
     <div>
       <NavBar />
@@ -125,10 +121,11 @@ export default function LandingPage() {
                 alt="Luxe Meadow"
                 width={150}
                 height={150}
+                priority
                 style={{ objectFit: "contain" }}
               />
               <p className="success-message">Thanks for subscribing!</p>
-              <button className="dismiss-button" onClick={handleDismissSuccess}>
+              <button className="dismiss-button" onClick={() => setIsSuccess(false)}>
                 Dismiss
               </button>
             </div>
@@ -138,44 +135,45 @@ export default function LandingPage() {
 
       {/* Styling for loader and success box */}
       <style jsx>{`
-        .loader-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 100px;
-        }
+  .loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+  }
 
-        .success-box {
-          background: white;
-          padding: 20px;
-          border-radius: 12px;
-          box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
+  .success-box {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;  /* Enable flexbox for centering */
+    flex-direction: column;  /* Stack items vertically */
+    justify-content: center;  /* Vertically center the content */
+    align-items: center;  /* Horizontally center the content */
+  }
 
-        .success-message {
-          font-size: 1.1rem;
-          margin-top: 12px;
-          color: #222;
-        }
+  .success-message {
+    font-size: 1.1rem;
+    margin-top: 12px;
+    color: #222;
+  }
 
-        .dismiss-button {
-          margin-top: 12px;
-          padding: 10px 20px;
-          background-color: #0070f3;
-          color: white;
-          border: none;
-          border-radius: 8px;
-          cursor: pointer;
-        }
+  .dismiss-button {
+    margin-top: 12px;
+    padding: 8px 16px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
 
-        .dismiss-button:hover {
-          background-color: #005bb5;
-        }
-      `}</style>
+  .dismiss-button:hover {
+    background-color: #005bb5;
+  }
+`}</style>
     </div>
   );
 }
