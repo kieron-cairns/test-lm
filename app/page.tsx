@@ -10,6 +10,8 @@ export default function LandingPage() {
   const [isClient, setIsClient] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false); // New state for error
+  const [errorMessage, setErrorMessage] = useState(""); // State for error message
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [gifSrc, setGifSrc] = useState("");
 
@@ -20,7 +22,8 @@ export default function LandingPage() {
 
   const handleSubscribe = async () => {
     if (!email) {
-      alert("Please enter a valid email address.");
+      setIsError(true);
+      setErrorMessage("Please enter a valid email address.");
       return;
     }
 
@@ -44,7 +47,7 @@ export default function LandingPage() {
 
       if (response.ok) {
         setIsSuccess(true);
-        setEmail("");  // Clear email after successful submission
+        setEmail(""); // Clear email after successful submission
       } else {
         let errorMessage = "Failed to subscribe.";
         try {
@@ -53,19 +56,22 @@ export default function LandingPage() {
         } catch {
           errorMessage = `Unexpected response: ${responseText}`;
         }
-        alert(`Error: ${errorMessage}`);
+        setIsError(true); // Show error dialog
+        setErrorMessage(errorMessage);
       }
     } catch (error) {
       console.error("Subscription error:", error);
-      alert("Something went wrong. Please try again.");
+      setIsError(true); // Show error dialog
+      setErrorMessage("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
 
   const handleDismiss = () => {
-    setIsSuccess(false);  // Only hide the success box
-    setHasSubmitted(false); // Keep the form visible, don't reset it
+    setIsSuccess(false);
+    setIsError(false); // Hide error dialog
+    setHasSubmitted(false);
   };
 
   return (
@@ -92,7 +98,7 @@ export default function LandingPage() {
         </div>
 
         <div id="shop-button-container">
-          {!hasSubmitted && !isSuccess && (
+          {!hasSubmitted && !isSuccess && !isError && (
             <>
               <input
                 className="shop-input"
@@ -135,10 +141,27 @@ export default function LandingPage() {
               </button>
             </div>
           )}
+
+          {!isLoading && isError && (
+            <div className="error-box">
+              <Image
+                src="/images/Luxe-Meadow-Black-Font@4x.png"
+                alt="Luxe Meadow"
+                width={150}
+                height={150}
+                priority
+                style={{ objectFit: "contain" }}
+              />
+              <p className="error-message">{errorMessage}</p>
+              <button className="dismiss-button" onClick={handleDismiss}>
+                Dismiss
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
-      {/* Styling for loader and success box */}
+      {/* Styling for loader, success, and error boxes */}
       <style jsx>{`
         .loader-container {
           display: flex;
@@ -147,7 +170,8 @@ export default function LandingPage() {
           height: 100px;
         }
 
-        .success-box {
+        .success-box,
+        .error-box {
           background: white;
           padding: 20px;
           border-radius: 12px;
@@ -159,10 +183,15 @@ export default function LandingPage() {
           align-items: center;
         }
 
-        .success-message {
+        .success-message,
+        .error-message {
           font-size: 1.1rem;
           margin-top: 12px;
           color: #222;
+        }
+
+        .error-message {
+          color: red;
         }
 
         .dismiss-button {
